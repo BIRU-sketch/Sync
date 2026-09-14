@@ -1,0 +1,7 @@
+{
+  "name": "voice-companion",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Low-latency desktop voice companion for developers, built on Voxide.",
+  "main": "electron/main.ts"
+}
