@@ -1,1 +1,7 @@
-// Registers all ipcMain handlers (shell, fs, ...) on app startup.
+import { registerShellHandlers } from './shell';
+import { registerFsHandlers } from './fs';
+
+export function registerIpcHandlers(): void {
+  registerShellHandlers();
+  registerFsHandlers();
+}
