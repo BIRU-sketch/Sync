@@ -12,6 +12,8 @@ function createWindow(): void {
   mainWindow = new BrowserWindow({
     width: Math.min(500),
     height: Math.min(500),
+    frame: false,
+    transparent: true,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       contextIsolation: true,
@@ -19,7 +21,8 @@ function createWindow(): void {
       sandbox: true,
     },
   });
-mainWindow.setMenuBarVisibility(false);
+  mainWindow.setMenuBarVisibility(false);
+  mainWindow.setOpacity(1);
   const devServerUrl = process.env.VITE_DEV_SERVER_URL;
   if (devServerUrl) {
     mainWindow.loadURL(devServerUrl);

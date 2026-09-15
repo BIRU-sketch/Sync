@@ -2,12 +2,17 @@ node_modules/
 dist/
 dist-electron/
 .env
+.env.*
+!.env.example
 .vite/
 coverage/
+out/
+release/
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
 .DS_Store
 Thumbs.db
 .vscode/
