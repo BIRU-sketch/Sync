@@ -1,9 +1,10 @@
 import type { ProjectState, ShellRunResult } from '../../electron/ipc/types'
 import type { UIState, UIStateContext } from '../types/ui'
+import type { VoxideParamRule } from '@voxide/react'
 
 export interface CapabilityDefinition {
 	description: string
-	params?: Record<string, { type: string; required?: boolean; description?: string }>
+	params?: Record<string, VoxideParamRule>
 	dangerous?: boolean
 	handler: (params: Record<string, unknown>) => Promise<unknown>
 }
@@ -88,7 +89,7 @@ export function createCapabilities(deps: CapabilityDependencies): Record<string,
 			description: 'Run a developer command in the active project folder. Destructive commands require confirmation.',
 			params: {
 				command: { type: 'string', required: true, description: 'Executable name, such as git, npm, cargo, or docker.' },
-				args: { type: 'string[]', description: 'Command arguments as an array of strings.' },
+				args: { type: 'array', description: 'Command arguments as an array of strings.' },
 				confirmed: { type: 'boolean', description: 'Set true only after the user confirms a destructive command.' },
 			},
 			dangerous: true,
