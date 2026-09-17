@@ -7,4 +7,5 @@ export interface UIStateContext {
   setMicLevel: (level: number) => void
   transcript: string[]
   addTranscript: (text: string) => void
+  clearTranscript: () => void
 }
