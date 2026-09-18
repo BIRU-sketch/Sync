@@ -17,3 +17,6 @@ pnpm-debug.log*
 Thumbs.db
 .vscode/
 .idea/
+test_scholarxiv_mcp.js
+test_llm_system.js
+test_llm_system.ts

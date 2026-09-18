@@ -23,10 +23,16 @@ function createWindow(): void {
   });
   mainWindow.setMenuBarVisibility(false);
   mainWindow.setOpacity(1);
-  const devServerUrl = process.env.VITE_DEV_SERVER_URL;
-  if (devServerUrl) {
+  
+  // In development, load from Vite dev server
+  const devServerUrl = process.env.VITE_DEV_SERVER_URL || 'http://localhost:5173';
+  if (process.env.NODE_ENV !== 'production') {
+    console.log('Loading from dev server:', devServerUrl);
     mainWindow.loadURL(devServerUrl);
+    // Open DevTools in development for debugging
+    mainWindow.webContents.openDevTools();
   } else {
+    // In production, load from built files
     mainWindow.loadFile(path.join(__dirname, '../dist/index.html'));
   }
 }

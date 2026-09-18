@@ -6,22 +6,11 @@ import { ThinkingUI } from "./components/ThinkingUI";
 import { TalkingUI } from "./components/TalkingUI";
 import { StatusBar } from "./components/StatusBar";
 import { Transcript } from "./components/Transcript";
-import { VoxideWidget } from "@voxide/react";
-import { ai, setVoxideUiState } from "./voxide/client";
-import { refreshVoxideProjectState } from "./voxide/state";
 
 function AppContent() {
   const uiState = useUIState();
   const { currentState, setState, setMicLevel } = uiState;
   const intervalRef = useRef<NodeJS.Timeout>();
-
-  useEffect(() => {
-    setVoxideUiState(uiState);
-  }, [uiState]);
-
-  useEffect(() => {
-    void refreshVoxideProjectState();
-  }, []);
 
   // Simulate mic level for listening and talking states
   useEffect(() => {
@@ -83,7 +72,6 @@ function App() {
   return (
     <UIStateProvider>
       <AppContent />
-      <VoxideWidget client={ai} />
     </UIStateProvider>
   );
 }
